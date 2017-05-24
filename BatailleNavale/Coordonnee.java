@@ -7,7 +7,7 @@ public class Coordonnee {
     private int abscisse;
     private int ordonnee;
 
-    public Coordonnee(int abscisse, int ordonnee) {
+    public Coordonnee(int abscisse, int ordonnee) { // OUAIISS !!!
         this.abscisse = abscisse;
         this.ordonnee = ordonnee;
     }
