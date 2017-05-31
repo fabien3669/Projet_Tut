@@ -4,19 +4,38 @@ package BatailleNavale;
  * Created by fabie_000 on 01/05/2017.
  */
 public class Coordonnee {
-    private int abscisse;
-    private int ordonnee;
+    private int ligne;
+    private int colone;
 
-    public Coordonnee(int abscisse, int ordonnee) { // OUAIISS !!!
-        this.abscisse = abscisse;
-        this.ordonnee = ordonnee;
+    public Coordonnee(int ligne, int colone) {
+        this.ligne = ligne;
+        this.colone = colone;
     }
 
-    public int getAbscisse() {
-        return abscisse;
+    public int getLigne() {
+        return ligne;
     }
 
-    public int getOrdonnee() {
-        return ordonnee;
+    public int getColone() {
+        return colone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Coordonnee that = (Coordonnee) o;
+
+        if (getLigne() != that.getLigne()) return false;
+        return getColone() == that.getColone();
+    }
+
+    @Override
+    public String toString() {
+        return "Coordonnee{" +
+                "ligne=" + ligne +
+                ", colone=" + colone +
+                '}';
     }
 }
