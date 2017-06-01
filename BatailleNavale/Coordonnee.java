@@ -7,7 +7,7 @@ public class Coordonnee {
     private int ligne;
     private int colone;
 
-    public Coordonnee(int ligne, int colone) {
+    public Coordonnee(int ligne, int colone) { // OUAIISS !!!
         this.ligne = ligne;
         this.colone = colone;
     }
@@ -21,21 +21,21 @@ public class Coordonnee {
     }
 
     @Override
+    public String toString() {
+        return "Coordonnee{" +
+                "ligne=" + ligne +
+                ", colone=" + colone +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Coordonnee that = (Coordonnee) o;
 
-        if (getLigne() != that.getLigne()) return false;
-        return getColone() == that.getColone();
-    }
-
-    @Override
-    public String toString() {
-        return "Coordonnee{" +
-                "ligne=" + ligne +
-                ", colone=" + colone +
-                '}';
+        if (ligne != that.ligne) return false;
+        return colone == that.colone;
     }
 }

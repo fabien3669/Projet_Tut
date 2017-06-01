@@ -13,6 +13,7 @@ public class Model {
     private int indiceDernierCoupJoueur1,indiceDernierCoupJoueur2;
     private int joueurEnCours;
     private boolean placementBateau;
+    private boolean aJoue;
 
     public Model() {
         joueur1 = new Bateau[]{
@@ -24,16 +25,20 @@ public class Model {
                 new Bateau(5), new Bateau(4), new Bateau(3), new Bateau(3), new Bateau(2)
         };
 
+
         for (int i = 0; i < joueur1.length; i++) {
             placeBateau(joueur1[i]);
             placeBateau(joueur2[i]);
         }
         indiceDernierCoupJoueur1=0;
         indiceDernierCoupJoueur2=0;
-        joueurEnCours =1;
-        placementBateau=true;
+        joueurEnCours =2;
+        placementBateau=false;
     }
 
+    public void setaJoue(boolean aJoue) { this.aJoue = aJoue; }
+
+    public boolean getaJoue() { return aJoue; }
 
     public boolean isPlacementBateau() {
         return placementBateau;
@@ -99,6 +104,12 @@ public class Model {
         this.joueurEnCours = joueurEnCours;
     }
 
+    public void changeJoueurEnCours() {
+        if (this.joueurEnCours == JOUEUR_1) {
+            joueurEnCours = JOUEUR_2;
+        } else { joueurEnCours = JOUEUR_1; }
+    }
+
     public boolean isCoupValide(Coordonnee xy){
         switch (joueurEnCours){
             case 1:
@@ -142,7 +153,9 @@ public class Model {
             for (int j = 0; j < tab.length; j++) {
                 if (tab[j]!=null){
                     if (tab[j].equals(xy)){
-                        updateBateau(i);
+                        if (!isPlacementBateau()){
+                            updateBateau(i);
+                        }
                         return true;
                     }
                 }
@@ -397,4 +410,6 @@ class Bateau{
             System.out.println(position[i]);
         }
     }
+
+
 }

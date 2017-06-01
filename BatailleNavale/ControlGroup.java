@@ -4,6 +4,7 @@ public class ControlGroup {
 
     private Model model;
     private Vue vue;
+    public ControlButtonGame controlBoutonGame;
     public ControlButton controlBouton;
 
 
@@ -13,7 +14,8 @@ public class ControlGroup {
 
         vue = new Vue(model);
 
-        controlBouton = new ControlButton(model,vue);
+        controlBoutonGame = new ControlButtonGame(model, vue);
+        controlBouton = new ControlButton(model, vue);
 
 
         vue.display();
