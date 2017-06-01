@@ -1,6 +1,7 @@
 # Projet_Tut
 
 Projet tutoré mis à jour
+
 Reprenez bien toutes les classes car il y a quelques changements dans model et coordonnées.
 (Coordonnées la méthode equals et toString et Model la variable aJoué)
 Reprenez également le dossier textures car j'ai changé des textures et j'en ai ajouté.
@@ -9,7 +10,7 @@ Reprenez également le dossier textures car j'ai changé des textures et j'en ai
 
 Bugs à régler :
 - Placement des bateaux aléatoire (plante parfois au lancement et empile parfois des bateaux)
-- Les bateaux ont parfois l'état détruit en début de partie alors qu'ils devraient être intact
+- Les bateaux ont parfois l'état détruit en début de partie alors qu'ils devraient être intacts
 - Dans l'écran de vue de nos bateaux, un bateau juste touché apparait entièrement coulé
 
 ***************
