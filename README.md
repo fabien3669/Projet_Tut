@@ -21,4 +21,5 @@ Fonctionalités à ajouter :
 - Pouvoir placer ses bateaux et pas aléatoirement
 - Faire un indicateur sur l'écran de jeu qui montre si le joueur peut jouer ou pas (lumière verte/éteinte)
 - Pourquoi pas un bouton menu en jeu pour pouvoir revenir au menu principal
+- Essayer de faire des gifs animés pour les cases lorsqu'on touche de l'eau ou un bateau
 - Ecrire des règles plus explicites ?
