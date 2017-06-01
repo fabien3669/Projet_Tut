@@ -19,5 +19,6 @@ Fonctionalités à ajouter :
 - Le jeu ne teste pas encore si tous les bateaux d'un joueur ont été détruits (donc sans fin)
 - Un écran de victoire avec le joueur qui a gagné précisé dessus
 - Pouvoir placer ses bateaux et pas aléatoirement
+- Faire un indicateur sur l'écran de jeu qui montre si le joueur peut jouer ou pas (lumière verte/éteinte)
 - Pourquoi pas un bouton menu en jeu pour pouvoir revenir au menu principal
 - Ecrire des règles plus explicites ?
