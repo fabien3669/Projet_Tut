@@ -164,154 +164,118 @@ public class Model {
         return false;
     }
 
-    private void placeBateau(Bateau bateau) {
+    private void placeBateau() {
         int choixSens1;
         int choixSens2;
         int l;
         int c;
         Random rd = new Random();
-        Coordonnee[] tab = bateau.getPosition();
-
-
-        choixSens1 = rd.nextInt(2); // 0 pour horizontal, 1 pour vertical
-        choixSens2=rd.nextInt(2); // 0 pour gauche ou haut, 1 pour droite ou bas
-        l=rd.nextInt(10);
-        c=rd.nextInt(10);
-        while (isBateauAt(new Coordonnee(l, c))){
-            l=rd.nextInt(10);
-            c=rd.nextInt(10);
-        }
-        tab[0] = new Coordonnee(l,c);
-        int coordEnCours=1;
-        int casePos =1;
-        if (choixSens1==0){
-            if (choixSens2==0){
-                int n = -1;
-                while (casePos!= bateau.getTaille()){
-                    if (c+n<0 || isBateauAt(new Coordonnee(l, c+n))){
-                        if (n<0){
-                            n=1;
-                        }
-                        else{
-                            while (isBateauAt(new Coordonnee(l, c))){
-                                l=rd.nextInt(10);
-                                c=rd.nextInt(10);
-                            }
-                            tab = new Coordonnee[bateau.getTaille()];
-                            tab[0]= new Coordonnee(l,c);
-                            coordEnCours=1;
-                            casePos=1;
-                        }
-                    }
-                    else{
-                        casePos++;
-                        tab[coordEnCours] = new Coordonnee(l, c+n);
-                        coordEnCours++;
-                        if (n<0){
-                            n--;
-                        }
-                        else{
-                            n++;
-                        }
-                    }
+        while (!placementOk()){
+            for (int i = 0; i < joueur1.length*2; i++) {
+                Coordonnee[] tab;
+                if (i<joueur1.length){
+                    tab = joueur1[i].getPosition();
                 }
-            }
-            else{
-                int n = 1;
-                while (casePos!= bateau.getTaille()){
-                    if (c+n>9 || isBateauAt(new Coordonnee(l, c+n))){
-                        if (n>0){
-                            n=-1;
-                        }
-                        else{
-                            while (isBateauAt(new Coordonnee(l, c))){
-                                l=rd.nextInt(10);
-                                c=rd.nextInt(10);
-                            }
-                            tab = new Coordonnee[bateau.getTaille()];
-                            tab[0]= new Coordonnee(l,c);
-                            casePos=1;
-                        }
-                    }
-                    else{
-                        casePos++;
-                        tab[coordEnCours] = new Coordonnee(l, c+n);
-                        coordEnCours++;
-                        if (n<0){
-                            n--;
-                        }
-                        else{
-                            n++;
-                        }
-
-                    }
+                else{
+                    tab = joueur2[i-5].getPosition();
                 }
-            }
-        }
-        else {
-            if (choixSens2==0){
-                int n = -1;
-                while (casePos!= bateau.getTaille()){
-                    if (l+n<0 || isBateauAt(new Coordonnee(l+n, c))){
-                        if (n<0){
-                            n=1;
-                        }
-                        else{
-                            while (isBateauAt(new Coordonnee(l, c))){
-                                l=rd.nextInt(10);
-                                c=rd.nextInt(10);
-                            }
-                            tab = new Coordonnee[bateau.getTaille()];
-                            tab[0]= new Coordonnee(l,c);
-                            coordEnCours=1;
-                            casePos=1;
-                        }
-                    }
-                    else{
-                        casePos++;
-                        tab[coordEnCours] = new Coordonnee(l+n, c);
-                        coordEnCours++;
-                        if (n<0){
-                            n--;
-                        }
-                        else{
-                            n++;
-                        }
-                    }
+                choixSens1 = rd.nextInt(2); // 0 pour horizontal, 1 pour vertical
+                choixSens2=rd.nextInt(2); // 0 pour gauche ou haut, 1 pour droite ou bas
+                l=rd.nextInt(10);
+                c=rd.nextInt(10);
+                tab[0] = new Coordonnee(l, c);
+                int dl=2;
+                int dc=2;
+                switch (choixSens1){
+                    case 0:
+                        dl = 0;
+                        break;
+                    case 1:
+                        dc=0;
+                        break;
                 }
-            }
-            else{
-                int n = 1;
-                while (casePos!= bateau.getTaille()){
-                    if (l+n>9 || isBateauAt(new Coordonnee(l+n, c))){
-                        if (n>0){
-                            n=-1;
+                switch (choixSens2){
+                    case 0:
+                        if (dl==0){
+                            dc=-1;
                         }
-                        else{
-                            while (isBateauAt(new Coordonnee(l, c))){
-                                l=rd.nextInt(10);
-                                c=rd.nextInt(10);
-                            }
-                            tab = new Coordonnee[bateau.getTaille()];
-                            tab[0]= new Coordonnee(l,c);
-                            casePos=1;
+                        else {
+                            dl=-1;
+                        }
+                        break;
+                    case 1:
+                        if (dl==0){
+                            dc=1;
+                        }
+                        else {
+                            dl=1;
+                        }
+                        break;
+                }
+                int caseMise = 1;
+                while (caseMise!=tab.length){
+                    if (l+dl <0 || l+dl > 9){
+                        if (dl<0){
+                            dl=1;
+                        }
+                        else {
+                            dl=-1;
                         }
                     }
-                    else{
-                        casePos++;
-                        tab[coordEnCours] = new Coordonnee(l+n, c);
-                        coordEnCours++;
-                        if (n<0){
-                            n--;
+                    if (c+dc < 0 || c+dc > 9){
+                        if (dc<0){
+                            dc=1;
                         }
-                        else{
-                            n++;
+                        else {
+                            dc=-1;
                         }
-
+                    }
+                    tab[caseMise] = new Coordonnee(l+dl, c+dc);
+                    caseMise++;
+                    if (dl>0){
+                        dl++;
+                    }
+                    else if (dl<0){
+                        dl--;
+                    }
+                    if (dc>0){
+                        dc++;
+                    }
+                    else if (dc<0){
+                        dc--;
                     }
                 }
             }
         }
+    }
+
+    private boolean placementOk() {
+        if (joueur1[0].getPosition()[0]==null){
+            return false;
+        }
+        for (int i = 0; i < joueur1.length; i++) {
+            for (int j = i+1; j < joueur1.length; j++) {
+                Coordonnee[] tabj11 = joueur1[i].getPosition();
+                Coordonnee[] tabj12 = joueur1[j].getPosition();
+                Coordonnee[] tabj21 = joueur2[i].getPosition();
+                Coordonnee[] tabj22 = joueur2[j].getPosition();
+                for (Coordonnee c1 : tabj11) {
+                    for (Coordonnee c2 : tabj12) {
+                        if (c1.equals(c2)) {
+                            return false;
+                        }
+                    }
+                }
+                for (Coordonnee c1 : tabj21) {
+                    for (Coordonnee c2 : tabj22) {
+                        if (c1.equals(c2)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     public void updateBateau(int i){
