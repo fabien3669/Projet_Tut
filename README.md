@@ -13,7 +13,7 @@ Bugs à régler :
 ***************
 
 Fonctionalités à ajouter :
-- Un écran de victoire avec le joueur qui a gagné précisé dessus
+- Un écran de victoire avec le joueur qui a gagné précisé dessus (prévu mais gif à faire et/ou a trouver)
 - Pouvoir placer ses bateaux et pas aléatoirement
 - Faire un indicateur sur l'écran de jeu qui montre si le joueur peut jouer ou pas (lumière verte/éteinte)(bouton done grisé?)
 - Pourquoi pas un bouton menu en jeu pour pouvoir revenir au menu principal (à améliorer (permettre de reprendre la partie en cours ou recommencer une nouvelle.. Je le ferais demain)
