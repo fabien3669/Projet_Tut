@@ -1,0 +1,1 @@
+pour tous les PNG (sauf icone.png), il faut trouver un GIF à la place
