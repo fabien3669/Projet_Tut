@@ -115,6 +115,7 @@ class ControlButtonJeu extends ControlButton implements ActionListener{
             fenetre.display();
         }
         else if (but.equals(fenetre.getJbDone())){
+            frame.setVisible(false);
             model.update();
             fenetre.affichageTransition();
             fenetre.display();

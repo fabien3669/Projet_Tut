@@ -13,10 +13,12 @@ public class MyJFrame extends JDialog {
     private String string;
     private JButton but;
     private JButton reprendre, nouvellePartie;
+    private Fenetre fenetre;
 
     public MyJFrame(JFrame parent, Dimension d){
         super(parent);
         setUndecorated(true);
+        fenetre =(Fenetre) parent;
         but = new JButton();
         reprendre = new JButton("Reprendre");
         nouvellePartie = new JButton("Nouvelle Partie");
@@ -29,6 +31,7 @@ public class MyJFrame extends JDialog {
     }
 
     public void setIcon(String icon) {
+        setLocationRelativeTo(fenetre);
         this.string = icon;
         but.setIcon(new ImageIcon(string));
         this.but.addActionListener(new ActionListener() {
@@ -46,6 +49,7 @@ public class MyJFrame extends JDialog {
     }
 
     public void setForms() {
+        setLocationRelativeTo(fenetre);
         JLabel label = new JLabel("Voulez vous commencer une nouvelle partie?");
         JPanel panel = new JPanel();
         panel.add(label);
