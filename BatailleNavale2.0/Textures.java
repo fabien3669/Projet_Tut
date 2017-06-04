@@ -4,10 +4,10 @@ package BatailleNavale;
  * Created by fabie_000 on 03/06/2017.
  */
 public enum Textures {
-    TOUCHE ("Textures/cases/BOOM.gif"),
-    DETRUIT ("Textures/cases/naviredétruit.gif"),
+    BATEAUTOUCHE("Textures/cases/BOOM.gif"),
+    BATEAUDETRUT("Textures/cases/naviredétruit.gif"),
     BATEAU ("Textures/cases/navire.gif"),
-    COULE ("Textures/cases/navirecoulé.gif"),
+    BATEAUCOULE("Textures/cases/navirecoulé.gif"),
     INCONNU ("Textures/cases/inconnu.gif"),
     VIDE ("Textures/cases/vide.gif"),
     BACK ("Textures/boutons/buttonback2.gif"),
@@ -18,14 +18,14 @@ public enum Textures {
     EYE ("Textures/boutons/buttoneye.gif"),
     TRANSITIONJ1 ("Textures/backgrounds/redtransition.gif"),
     TRANSITIONJ2 ("Textures/backgrounds/bluetransition.gif"),
-    BACKGROUND ("Textures/backgrounds/gamebackground.png"),
+    BACKGROUNDJEU("Textures/backgrounds/gamebackground.png"),
     BACKGROUNDBATEAUX ("Textures/backgrounds/gamebackgroundbateaux.gif"),
     BACKGROUNDRULES ("Textures/backgrounds/rules.png"),
     TITLESCREEN ("Textures/backgrounds/titlescreenFinal.png"),
     ICONE ("Textures/icone/icone.png"),
-    AFFICHAGETOUCHE ("Textures/icone/touche.png"),
-    AFFICHAGECOULE ("Textures/icone/coule.png"),
-    AFFICHAGERATE ("Textures/icone/rate.png"),
+    AFFICHAGETOUCHE ("Textures/icone/touche.gif"),
+    AFFICHAGECOULE ("Textures/icone/coule.gif"),
+    AFFICHAGERATE ("Textures/icone/rate.gif"),
     AFFICHAGETERMINEJ1 ("Textures/icones/termine1.png"),
     AFFICHAGETERMINEJ2 ("Textures/icones/termine2.png"),
     ;

@@ -1,6 +1,7 @@
 package BatailleNavale;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,16 +13,20 @@ import static java.lang.System.exit;
 public class ControlGroup {
     private Model model;
     private Fenetre fenetre;
+    private MyJFrame frame;
     private ControlButtonMenu controlButton;
     private ControlButtonJeu controlButtonJeu;
     private ControlButtonTransition controlButtonTransition;
+    private ControlForm controlForm;
 
     public ControlGroup(Model model) {
         this.model = model;
         this.fenetre = new Fenetre(model);
-        this.controlButton = new ControlButtonMenu(model, fenetre);
+        this.frame = new MyJFrame(fenetre, new Dimension(300,100));
+        this.controlButton = new ControlButtonMenu(model, fenetre, frame);
         this.controlButtonJeu = new ControlButtonJeu(model, fenetre);
         this.controlButtonTransition = new ControlButtonTransition(model, fenetre);
+        this.controlForm = new ControlForm(frame, model, fenetre);
     }
 }
 
@@ -36,10 +41,12 @@ abstract class ControlButton {
 }
 
 class ControlButtonMenu extends ControlButton implements ActionListener {
+    private MyJFrame frame;
 
-    public ControlButtonMenu(Model model, Fenetre fenetre) {
+    public ControlButtonMenu(Model model, Fenetre fenetre, MyJFrame frame) {
         super(model, fenetre);
         fenetre.setControlButtonMenu(this);
+        this.frame = frame;
     }
 
     @Override
@@ -53,9 +60,13 @@ class ControlButtonMenu extends ControlButton implements ActionListener {
             fenetre.display();
         }
         else if (but.equals(fenetre.getJbPlay())){
-            model.resetModel();
-            fenetre.affichageTransition();
-            fenetre.display();
+            if (model.getIndiceDernierCoupJoueur1()!=0){
+                frame.setForms();
+            }
+            else{
+                fenetre.affichageTransition();
+                fenetre.display();
+            }
         }
         else {
             fenetre.affichageMenu();
@@ -84,8 +95,8 @@ class ControlButtonJeu extends ControlButton implements ActionListener{
 
     public ControlButtonJeu(Model model, Fenetre fenetre) {
         super(model, fenetre);
-        frame = new MyJFrame(fenetre);
         fenetre.setControlButtonGame(this);
+        this.frame = new MyJFrame(fenetre, new Dimension(845, 65));
     }
 
     @Override
@@ -118,16 +129,16 @@ class ControlButtonJeu extends ControlButton implements ActionListener{
                     boolean b2 = model.isBateauAt(xy);
                     if (b2){
                         Bateau b = model.getBateauAt(xy);
-                        if (b.getState().equals("TOUCHE")){
+                        if (b.getState().equals("BATEAUTOUCHE")){
                             frame.setIcon(Textures.AFFICHAGETOUCHE.getPath());
-                            fenetre.getJButtons()[l][c].setIcon(new ImageIcon(Textures.TOUCHE.getPath()));
+                            fenetre.getJButtons()[l][c].setIcon(new ImageIcon(Textures.BATEAUTOUCHE.getPath()));
                         }
                         else{
                             frame.setIcon(Textures.AFFICHAGECOULE.getPath());
                             for (int i = 0; i < b.getPosition().length; i++) {
                                 int k = b.getPosition()[i].getLigne();
                                 int m = b.getPosition()[i].getColonne();
-                                fenetre.getJButtons()[k][m].setIcon(new ImageIcon(Textures.COULE.getPath()));
+                                fenetre.getJButtons()[k][m].setIcon(new ImageIcon(Textures.BATEAUCOULE.getPath()));
                             }
                         }
                     }
@@ -154,5 +165,33 @@ class ControlButtonJeu extends ControlButton implements ActionListener{
                 fenetre.dialog("Vous avez terminé votre tour, veuillez cliquer sur DONE", "Tour terminé");
             }
         }
+    }
+}
+
+class ControlForm implements ActionListener{
+    Fenetre fenetre;
+    MyJFrame frame;
+    Model model;
+
+    public ControlForm(MyJFrame frame, Model model, Fenetre fenetre) {
+        this.model=model;
+        this.frame = frame;
+        this.fenetre = fenetre;
+        frame.setControler(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton but = (JButton) e.getSource();
+        if (but.equals(frame.getNouvellePartie())) {
+            model.resetModel();
+            fenetre.affichageTransition();
+            fenetre.display();
+        }
+        else if (but.equals(frame.getReprendre())) {
+            fenetre.affichageTransition();
+            fenetre.display();
+        }
+        frame.setVisible(false);
     }
 }

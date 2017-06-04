@@ -11,7 +11,6 @@ public class Fenetre extends JFrame {
     private JButton jbRules, jbBack, jbPlay, jbQuit, jbEye, jbEyeVB, jbDone, jbTransition, jbMenu;
     private JButton[][] jButtons;
     private JLayeredPane layeredPane;
-    private JButton JButtons;
 
     public Fenetre(Model model){
         this.model = model;
@@ -111,7 +110,7 @@ public class Fenetre extends JFrame {
 
     public void affichageTirs(){
         JLabel label = new JLabel();
-        label.setIcon(new ImageIcon(Textures.BACKGROUND.getPath()));
+        label.setIcon(new ImageIcon(Textures.BACKGROUNDJEU.getPath()));
         label.setBounds(0, 0, 845, 640);
 
         jbDone.setIcon(new ImageIcon(Textures.DONE.getPath()));
@@ -145,11 +144,11 @@ public class Fenetre extends JFrame {
                     if (b==null){
                         jButtons[i][j].setIcon(new ImageIcon(Textures.VIDE.getPath()));
                     }
-                    else if (b.getState().equals("TOUCHE")){
-                        jButtons[i][j].setIcon(new ImageIcon(Textures.DETRUIT.getPath()));
+                    else if (b.getState().equals("BATEAUTOUCHE")){
+                        jButtons[i][j].setIcon(new ImageIcon(Textures.BATEAUDETRUT.getPath()));
                     }
-                    else if (b.getState().equals("COULE")){
-                        jButtons[i][j].setIcon(new ImageIcon(Textures.COULE.getPath()));
+                    else if (b.getState().equals("BATEAUCOULE")){
+                        jButtons[i][j].setIcon(new ImageIcon(Textures.BATEAUCOULE.getPath()));
                     }
                 }
                 else {
@@ -204,11 +203,11 @@ public class Fenetre extends JFrame {
                     Bateau b = tab2[k];
                     if (c.isDansTableau(b.getPosition())){
                         if (c.isDansTableau(tab)){
-                            if (b.getState().equals("TOUCHE")){
-                                tabButtons[i][j].setIcon(new ImageIcon(Textures.DETRUIT.getPath()));
+                            if (b.getState().equals("BATEAUTOUCHE")){
+                                tabButtons[i][j].setIcon(new ImageIcon(Textures.BATEAUDETRUT.getPath()));
                             }
                             else {
-                                tabButtons[i][j].setIcon(new ImageIcon(Textures.COULE.getPath()));
+                                tabButtons[i][j].setIcon(new ImageIcon(Textures.BATEAUCOULE.getPath()));
                             }
                         }
                         else {
@@ -237,10 +236,6 @@ public class Fenetre extends JFrame {
 
     private void refreshPane(JLayeredPane layeredPane) {
         setContentPane(layeredPane);
-    }
-
-    public void unDisplay(){
-        setVisible(false);
     }
 
     public void setControlButtonMenu(ControlButtonMenu controlButtonMenu) {
