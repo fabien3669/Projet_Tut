@@ -102,6 +102,7 @@ class ControlButtonJeu extends ControlButton implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton but = (JButton) e.getSource();
+        frame.setVisible(false);
         if (but.equals(fenetre.getJbMenu())){
             fenetre.affichageMenu();
             fenetre.display();
@@ -115,7 +116,6 @@ class ControlButtonJeu extends ControlButton implements ActionListener{
             fenetre.display();
         }
         else if (but.equals(fenetre.getJbDone())){
-            frame.setVisible(false);
             model.update();
             fenetre.affichageTransition();
             fenetre.display();
