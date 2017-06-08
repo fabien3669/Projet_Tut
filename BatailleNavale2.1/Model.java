@@ -148,8 +148,12 @@ public class Model {
     }
 
     public void update(){
-        if (isPlacementBateau() && joueurEnCours==JOUEUR_2){
-            setPlacementBateau(false);
+        if (isPlacementBateau()){
+            this.bateauOnMoving=null;
+            this.isBateauSelected=false;
+            if (joueurEnCours==JOUEUR_2){
+                setPlacementBateau(false);
+            }
         }
         aJoue=false;
         if (joueurEnCours==JOUEUR_1){

@@ -20,13 +20,12 @@ public class MyJFrame extends JDialog {
         setUndecorated(true);
         fenetre =(Fenetre) parent;
         but = new JButton();
-        reprendre = new JButton("Reprendre");
-        nouvellePartie = new JButton("Nouvelle Partie");
+        reprendre = new JButton();
+        nouvellePartie = new JButton();
         but.setBorder(BorderFactory.createEmptyBorder());
         reprendre.setBorder(BorderFactory.createEmptyBorder());
         nouvellePartie.setBorder(BorderFactory.createEmptyBorder());
         setSize(d);
-        setLocationRelativeTo(parent);
         setResizable(false);
     }
 
@@ -49,17 +48,26 @@ public class MyJFrame extends JDialog {
     }
 
     public void setForms() {
-        setLocationRelativeTo(fenetre);
-        JLabel label = new JLabel("Voulez vous commencer une nouvelle partie?");
-        JPanel panel = new JPanel();
-        panel.add(label);
-        JPanel butpan = new JPanel();
-        reprendre.setBounds(10, 50, 50, 20);
-        nouvellePartie.setBounds(90, 50, 50, 20);
-        butpan.add(reprendre);
-        butpan.add(nouvellePartie);
-        panel.add(butpan);
-        setContentPane(panel);
+        setLocation(fenetre.getX()+110, fenetre.getY()+175);
+        setSize(new Dimension(640, 320));
+        JLabel label = new JLabel("<html>Voulez vous commencer une nouvelle partie <br>&emsp;&emsp;&emsp;&emsp;  ou continuer celle en cours?</html>");
+        label.setFont(new Font("stencil", Font.BOLD, 20));
+        label.setBounds(60, 60, 560, 50);
+        JLabel lab = new JLabel();
+        lab.setIcon(new ImageIcon(Textures.BACKGROUNDPOPUP.getPath()));
+        lab.setBounds(0,0,640,320);
+        reprendre.setIcon(new ImageIcon(Textures.REPRENDRE.getPath()));
+        reprendre.setBounds(40, 200, 256, 96);
+        nouvellePartie.setIcon(new ImageIcon(Textures.NOUVEAU.getPath()));
+        nouvellePartie.setBounds(344, 200, 256, 96);
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setSize(new Dimension(845,640));
+        layeredPane.add(lab,0, 0);
+        layeredPane.add(label, 1, 0);
+        layeredPane.add(reprendre, 1, 0);
+        layeredPane.add(nouvellePartie, 1, 0);
+
+        setContentPane(layeredPane);
         display();
     }
 

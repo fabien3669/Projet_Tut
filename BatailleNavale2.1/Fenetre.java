@@ -126,8 +126,8 @@ public class Fenetre extends JFrame {
         jbEye.setBounds(755, 5, 64, 68);
         jbEye.setBorder(BorderFactory.createEmptyBorder());
 
-        jbMenu.setIcon(new ImageIcon(Textures.DONE.getPath()));
-        jbMenu.setBounds(5,5,128,64);
+        jbMenu.setIcon(new ImageIcon(Textures.MENU.getPath()));
+        jbMenu.setBounds(5,5,64,64);
         jbMenu.setBorder(BorderFactory.createEmptyBorder());
 
         JPanel tabBut = new JPanel(new GridLayout(10,10));
@@ -246,8 +246,9 @@ public class Fenetre extends JFrame {
         else{
             jbDone.setEnabled(true);
         }
-        jbMenu.setIcon(new ImageIcon(Textures.DONE.getPath()));
-        jbMenu.setBounds(5,5,128,64);
+
+        jbMenu.setIcon(new ImageIcon(Textures.MENU.getPath()));
+        jbMenu.setBounds(5,5,64,64);
         jbMenu.setBorder(BorderFactory.createEmptyBorder());
 
         JPanel tabButPlacement = new JPanel(new GridLayout(10,10));
@@ -266,7 +267,12 @@ public class Fenetre extends JFrame {
                 for (int k = 0; k < tab2.length; k++) {
                     Bateau b = tab2[k];
                     if (c.isDansTableau(b.getPosition())){
-                        jButtonsPlacement[i][j].setIcon(new ImageIcon(Textures.BATEAU.getPath()));
+                        if (b.equals(model.getBateauOnMoving())){
+                            jButtonsPlacement[i][j].setIcon(new ImageIcon(Textures.BATEAUSELECTIONNE.getPath()));
+                        }
+                        else{
+                            jButtonsPlacement[i][j].setIcon(new ImageIcon(Textures.BATEAU.getPath()));
+                        }
                         jButtonsPlacement[i][j].setBorder(BorderFactory.createEmptyBorder());
                     }
                 }
@@ -342,10 +348,6 @@ public class Fenetre extends JFrame {
 
     public JButton getJbEyeVB() {
         return jbEyeVB;
-    }
-
-    public JButton getJbTransition() {
-        return jbTransition;
     }
 
     public JButton getJbMenu() {
