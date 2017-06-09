@@ -49,15 +49,15 @@ public class Fenetre extends JFrame {
         label.setBounds(0, 0, 845, 640);
 
         jbRules.setIcon(new ImageIcon(Textures.RULES.getPath()));
-        jbRules.setBounds(150, 560, 160, 64);
+        jbRules.setBounds(200, 560, 64, 64);
         jbRules.setBorder(BorderFactory.createEmptyBorder());
 
         jbPlay.setIcon(new ImageIcon(Textures.PLAY.getPath()));
-        jbPlay.setBounds(365, 560, 128, 64);
+        jbPlay.setBounds(365, 560, 64, 64);
         jbPlay.setBorder(BorderFactory.createEmptyBorder());
 
         jbQuit.setIcon(new ImageIcon(Textures.QUIT.getPath()));
-        jbQuit.setBounds(545, 560, 128, 64);
+        jbQuit.setBounds(545, 560, 64, 64);
         jbQuit.setBorder(BorderFactory.createEmptyBorder());
 
         layeredPane = new JLayeredPane();
@@ -81,11 +81,11 @@ public class Fenetre extends JFrame {
 
 
         jbBack.setIcon(new ImageIcon(Textures.BACK.getPath()));
-        jbBack.setBounds(200, 560, 128, 64);
+        jbBack.setBounds(200, 560, 64, 64);
         jbBack.setBorder(BorderFactory.createEmptyBorder());
 
         jbPlay.setIcon(new ImageIcon(Textures.PLAY.getPath()));
-        jbPlay.setBounds(365, 560, 128, 64);
+        jbPlay.setBounds(365, 560, 64, 64);
         jbPlay.setBorder(BorderFactory.createEmptyBorder());
 
         layeredPane = new JLayeredPane();
@@ -116,17 +116,17 @@ public class Fenetre extends JFrame {
         label.setBounds(0, 0, 845, 640);
 
         jbDone.setIcon(new ImageIcon(Textures.DONE.getPath()));
-        jbDone.setBounds(710, 560, 128, 64);
+        jbDone.setBounds(745, 560, 64, 64);
         jbDone.setBorder(BorderFactory.createEmptyBorder());
         if (!model.isaJoue()){
             jbDone.setEnabled(false);
         }
 
         jbEye.setIcon(new ImageIcon(Textures.EYE.getPath()));
-        jbEye.setBounds(755, 5, 64, 68);
+        jbEye.setBounds(745, 25, 64, 64);
         jbEye.setBorder(BorderFactory.createEmptyBorder());
 
-        jbMenu.setIcon(new ImageIcon(Textures.MENU.getPath()));
+        jbMenu.setIcon(new ImageIcon(Textures.QUIT.getPath()));
         jbMenu.setBounds(5,5,64,64);
         jbMenu.setBorder(BorderFactory.createEmptyBorder());
 
@@ -178,8 +178,8 @@ public class Fenetre extends JFrame {
         label.setIcon(new ImageIcon(Textures.BACKGROUNDBATEAUX.getPath()));
         label.setBounds(0, 0, 845, 640);
 
-        jbEyeVB.setIcon(new ImageIcon(Textures.EYE.getPath()));
-        jbEyeVB.setBounds(755, 5, 64, 68);
+        jbEyeVB.setIcon(new ImageIcon(Textures.BACK.getPath()));
+        jbEyeVB.setBounds(745, 25, 64, 64);
         jbEyeVB.setBorder(BorderFactory.createEmptyBorder());
 
         JPanel tabBut = new JPanel(new GridLayout(10,10));
@@ -238,7 +238,7 @@ public class Fenetre extends JFrame {
         label.setBounds(0, 0, 845, 640);
 
         jbDone.setIcon(new ImageIcon(Textures.DONE.getPath()));
-        jbDone.setBounds(710, 560, 128, 64);
+        jbDone.setBounds(745, 560, 64, 64);
         jbDone.setBorder(BorderFactory.createEmptyBorder());
         if (!model.placementOk()){
             jbDone.setEnabled(false);
@@ -247,7 +247,7 @@ public class Fenetre extends JFrame {
             jbDone.setEnabled(true);
         }
 
-        jbMenu.setIcon(new ImageIcon(Textures.MENU.getPath()));
+        jbMenu.setIcon(new ImageIcon(Textures.QUIT.getPath()));
         jbMenu.setBounds(5,5,64,64);
         jbMenu.setBorder(BorderFactory.createEmptyBorder());
 
